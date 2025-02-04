@@ -42,16 +42,15 @@
 }
 
 .CardPizza {
+  height:100%;
   width:fit-content;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  border-radius:300px 100px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
 }
 
 .CardPizza > img{
-  padding: 5px;
   width: 100%;
   height: auto;
 }
@@ -67,6 +66,7 @@
 
 .overlay {
   position: absolute;
+  border-radius: 300px 100px;
   top: 0;
   left: 0;
   width: 100%;
