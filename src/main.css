@@ -1,0 +1,95 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+#root{
+  background-color: #1a1a1a;
+}
+
+.header{
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+  url(./assets/img/pizza1head.jpg);
+  background-size: cover;
+  height: 20vh ;
+  color: white;
+  text-align: center;
+  padding: 10%;
+
+}
+
+.navbar{
+  display: flex;
+  gap: 5%;
+  place-items: center;
+  height:5% ;
+  color: white;
+}
+
+.home {
+  text-align: center;
+  height: 80%;
+}
+
+.footer {
+  color: white;
+  padding: 20px;
+  text-align: center;
+  height:15% ;
+
+}
+
+.CardPizza {
+  width:fit-content;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+}
+
+.CardPizza > img{
+  padding: 5px;
+  width: 100%;
+  height: auto;
+}
+
+.container-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border: 2px solid;
+  gap: 20px;
+  padding: 5vh;
+  align-content: center;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.CardPizza-img:hover .overlay {
+  opacity: 1;
+}
+
+.CardPizza-img {
+  position: relative;
+}
+
+.name-pizza{
+  color: #ddd;
+  text-decoration:underline;
+}
