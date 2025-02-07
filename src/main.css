@@ -44,7 +44,7 @@
 .CardPizza {
   height:100%;
   width:fit-content;
-  border-radius:300px 100px;
+  border-radius:50%;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
@@ -66,7 +66,7 @@
 
 .overlay {
   position: absolute;
-  border-radius: 300px 100px;
+  border-radius: 50%;
   top: 0;
   left: 0;
   width: 100%;
@@ -92,4 +92,21 @@
 .name-pizza{
   color: #ddd;
   text-decoration:underline;
+}
+
+.regpage{
+  background-color: #ffffff;
+   align-items:initial;
+   padding:15vh;
+}
+
+.datacontainer h5{
+margin: 5px;
+}
+
+.datacontainer input{
+  display: block;
+  margin: 15px 5px;
+  width: 70%;
+  padding: 2px;
 }
