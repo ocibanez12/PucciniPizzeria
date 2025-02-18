@@ -15,7 +15,7 @@ const Cart = () => {
       .map(pizza =>
         pizza.id === id ? { ...pizza, count: pizza.count - 1 } : pizza
       )
-      .filter(pizza => pizza.count > 0) // Eliminamos si la cantidad es 0
+      .filter(pizza => pizza.count > 0)
     )
   }
 
