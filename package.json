@@ -11,7 +11,7 @@
   },
   "eslintConfig": {
     "extends": [
-      "*./node_modules/standardeslintrc.json"
+      "*./node_modules/standardes/lintrc.json"
     ]
   },
   "dependencies": {
