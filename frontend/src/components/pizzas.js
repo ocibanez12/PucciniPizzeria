@@ -44,7 +44,7 @@ export const pizzas = [
     id: 'P006',
     img: 'https://firebasestorage.googleapis.com/v0/b/apis-varias-mias.appspot.com/o/pizzeria%2Fpizza-2000595_640_c.jpg?alt=media&token=61325b6e-a1e0-441e-b3b5-7335ba13e8be',
     ingredients: ['mozzarella', 'pimientos', 'pollo grillé', 'orégano'],
-    name: 'pollo picante',
+    name: 'pollo picantasdasde',
     price: 8500
   }
 ]

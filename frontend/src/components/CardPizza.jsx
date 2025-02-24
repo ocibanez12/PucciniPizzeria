@@ -13,8 +13,8 @@ const CardPizza = ({ desc, id, img, ingredients, name, price }) => {
         <button className='card-button'>Comprar</button>
       </div>
       <ul className='overlay'>
-        {ingredients.map((ingredient) => (
-          <li key={ingredient}>{capFirst(ingredient)}</li>
+        {ingredients.map((ingredient, index) => (
+          <li key={`${id}-${index}`}>{capFirst(ingredient)}</li>
         ))}
       </ul>
     </div>

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { pizzaCart } from '../pizzas'
+import { pizzaCart } from './pizzas'
 
 const Cart = () => {
   const [cart, setCart] = useState(pizzaCart)
@@ -11,11 +11,9 @@ const Cart = () => {
   }
 
   const decCount = (id) => {
-    setCart(cart
-      .map(pizza =>
-        pizza.id === id ? { ...pizza, count: pizza.count - 1 } : pizza
-      )
-      .filter(pizza => pizza.count > 0)
+    setCart(cart.map(pizza =>
+      pizza.id === id ? { ...pizza, count: pizza.count - 1 } : pizza
+    ).filter(pizza => pizza.count > 0)
     )
   }
 
