@@ -1,5 +1,5 @@
 import CardPizza from './CardPizza'
-import Header from './Header'
+import Header from '../components/Header'
 import { useEffect, useState } from 'react'
 import { SyncLoader } from 'react-spinners'
 
@@ -26,9 +26,11 @@ const Pizza = () => {
   if (!pizza) {
     return (
       <SyncLoader
-        margin={0}
+        margin={3}
         size={40}
         speedMultiplier={0.7}
+        color='#ececec'
+        className='d-flex justify-content-center p-5'
       />
     )
   }

@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const CardPizza = ({ desc, id, img, ingredients, name, price }) => {
   const capFirst = (str) => {
     if (!str) { return '' }
@@ -10,7 +12,7 @@ const CardPizza = ({ desc, id, img, ingredients, name, price }) => {
         <h2 className='card-title'>{capFirst(name)}</h2>
         <p className='card-text'>Precio: $<strong>{price}</strong></p>
         <p className='card-text'>{desc}</p>
-        <button className='card-button'>Comprar</button>
+        <Link to='/Pizza'><button className='card-button'>Comprar</button></Link>
       </div>
       <ul className='overlay'>
         {ingredients.map((ingredient, index) => (

@@ -1,5 +1,5 @@
 import CardPizza from './CardPizza'
-import Header from './Header'
+import Header from '../components/Header'
 import { useEffect, useState } from 'react'
 
 const Home = () => {

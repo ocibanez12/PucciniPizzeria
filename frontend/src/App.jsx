@@ -1,23 +1,29 @@
 import Footer from './components/Footer'
-import Home from './components/Home'
+import Home from './pages/Home'
 import Navbar from './components/Navbar'
-import Login from './components/Login'
-import Register from './components/Register'
-import Cart from './components/Cart'
-import Pizza from './components/Pizza'
-
+import Login from './pages/Login'
+import Register from './pages/Register'
+import Cart from './pages/Cart'
+import Pizza from './pages/Pizza'
+import NotFound from './components/NotFound'
+import Profile from './pages/Profile'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+// EL LINK A 'PIZZA' FUE DADO AL BOTON COMPRAR EN /CARDPIZZA YA QUE NO ENTENDI DONDE DEBIA IR
 const App = () => {
   return (
-    <>
+    <BrowserRouter>
       <Navbar className='navbar' />
-      <Pizza />
-      {/* <Home className='home' /> */}
-      {/* <Register /> */}
-      {/* <Login /> */}
-      {/* <Cart /> */}
+      <Routes>
+        <Route path='/' element={<Home className='home' />} />
+        <Route path='/Pizza' element={<Pizza />} />
+        <Route path='/Register' element={<Register />} />
+        <Route path='/Login' element={<Login />} />
+        <Route path='/Cart' element={<Cart />} />
+        <Route path='/*' element={<NotFound />} />
+        <Route path='/Profile' element={<Profile />} />
+      </Routes>
       <Footer className='footer' />
-    </>
+    </BrowserRouter>
   )
 }
-
 export default App
