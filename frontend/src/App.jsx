@@ -9,7 +9,6 @@ import NotFound from './components/NotFound'
 import Profile from './pages/Profile'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import ProductProvider from './store/ProductsContext'
-// EL LINK A 'PIZZA' FUE DADO AL BOTON COMPRAR EN /CARDPIZZA YA QUE NO ENTENDI DONDE DEBIA IR
 const App = () => {
   return (
     <BrowserRouter>

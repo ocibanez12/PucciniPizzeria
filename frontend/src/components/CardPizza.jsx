@@ -17,8 +17,8 @@ const CardPizza = ({ id, img, name, price, desc, ingredients }) => {
         <p className='card-text'>Precio: $<strong>{price}</strong></p>
         <p className='card-text'>{desc}</p>
         <div className='button-container'>
-          <button className='card-button' onClick={handleAddCart}>Comprar</button>
-          <Link to='/Pizza'><button className='card-button'>Ver más</button></Link>
+          <button type="button" className="btn btn-outline-light" onClick={handleAddCart}>Comprar</button>
+          <Link to='/Pizza'><button type="button" className="btn btn-outline-light">Ver más</button></Link>
         </div>
       </div>
       <ul className='overlay'>

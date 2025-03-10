@@ -23,7 +23,7 @@ const Navbar = () => {
             <Link to='/Register'><button type='button' className='btn btn-outline-light'>🔐 Register</button></Link>
           </>
           )}
-      <Link to='/Cart'><button type='button' className='btn btn-outline-light'>Total: ${total} </button></Link>
+      <Link to='/Cart'><button type="button" className="btn btn-light">Total: ${total} </button></Link>
     </div>
   )
 }

@@ -42,33 +42,35 @@ const Login = () => {
   }
 
   return (
-    <div className='regpage'>
-      <h1>Iniciar sesión</h1>
-      <br />
-      <div className='datacontainer'>
-        <form onSubmit={handleSubmit}>
-          <h5>Correo electrónico</h5>
-          <input
-            className='form-control'
-            type='text'
-            value={credentials.mail}
-            onChange={handleChange}
-            name='mail'
-            placeholder='Correo electrónico'
-          />
-          <h5>Contraseña</h5>
-          <input
-            className='form-control'
-            type='password'
-            value={credentials.pass}
-            onChange={handleChange}
-            name='pass'
-            placeholder='Contraseña'
-          />
-          <button className='btn btn-primary' type='submit'>
-            Iniciar sesión
-          </button>
-        </form>
+    <div className='containerLogin'>
+      <div className='regpage'>
+        <h1>Iniciar sesión</h1>
+        <br />
+        <div className='datacontainer'>
+          <form onSubmit={handleSubmit}>
+            <h5>Correo electrónico</h5>
+            <input
+              className='form-control'
+              type='text'
+              value={credentials.mail}
+              onChange={handleChange}
+              name='mail'
+              placeholder='Correo electrónico'
+            />
+            <h5>Contraseña</h5>
+            <input
+              className='form-control'
+              type='password'
+              value={credentials.pass}
+              onChange={handleChange}
+              name='pass'
+              placeholder='Contraseña'
+            />
+            <button className='btn btn-primary' type='submit'>
+              Iniciar sesión
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   )
