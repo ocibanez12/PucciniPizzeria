@@ -1,25 +1,10 @@
-import CardPizza from './CardPizza'
+import { useContext } from 'react'
+import CardPizza from '../components/CardPizza'
 import Header from '../components/Header'
-import { useEffect, useState } from 'react'
+import { ProductContext } from '../store/ProductsContext'
 
 const Home = () => {
-  const [pizza, setPizzas] = useState([])
-  const url = ('http://localhost:5000/api/pizzas')
-  const obtenerPizza = async () => {
-    try {
-      const response = await fetch(url)
-      const data = await response.json()
-      setPizzas(data)
-      console.log(data)
-    } catch (error) {
-      console.error('Error', error)
-    }
-  }
-
-  useEffect(() => {
-    obtenerPizza()
-  }, [])
-
+  const { pizza } = useContext(ProductContext)
   return (
     <div className='home'>
       <Header />
@@ -28,6 +13,7 @@ const Home = () => {
           <CardPizza
             desc={pizza.desc}
             key={pizza.id}
+            id={pizza.id}
             img={pizza.img}
             ingredients={pizza.ingredients}
             name={pizza.name}

@@ -1,32 +1,11 @@
-import { useState } from 'react'
-import { pizzaCart } from '../components/pizzas'
+import { useContext } from 'react'
+import { ProductContext } from '../store/ProductsContext'
 
 const Cart = () => {
-  const [cart, setCart] = useState(pizzaCart)
-
-  const incCount = (id) => {
-    setCart(cart.map(pizza =>
-      pizza.id === id ? { ...pizza, count: pizza.count + 1 } : pizza
-    ))
-  }
-
-  const decCount = (id) => {
-    setCart(cart.map(pizza =>
-      pizza.id === id ? { ...pizza, count: pizza.count - 1 } : pizza
-    ).filter(pizza => pizza.count > 0)
-    )
-  }
-
-  const capFirst = (str) => {
-    if (!str) { return '' }
-    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
-  }
-
-  const total = cart.reduce((sum, pizza) => sum + pizza.price * pizza.count, 0)
+  const { cart, incCount, decCount, total, capFirst } = useContext(ProductContext)
 
   return (
     <div className='cart-container'>
-      <h2>Tu pedido:</h2>
       {cart.map((pizza) => (
         <div key={pizza.id} className='cart-item'>
           <img src={pizza.img} alt={pizza.name} className='pizza-img' />

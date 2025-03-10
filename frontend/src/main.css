@@ -122,6 +122,7 @@ margin: 5px;
 .card-button{
   border-radius: 5px;
   padding: 5px;
+  background-color: #ddd9d9;
 }
 
 
@@ -225,3 +226,12 @@ margin: 5px;
   transform: scale(1.1);
 }
 
+.button-container{
+  display: flex;
+  justify-content:space-around;
+}
+
+.loadPage{
+  width: 100vh;
+  height: 100vh;
+}

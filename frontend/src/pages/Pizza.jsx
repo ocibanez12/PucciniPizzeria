@@ -1,51 +1,21 @@
-import CardPizza from './CardPizza'
+import { useContext } from 'react'
+import CardPizza from '../components/CardPizza'
 import Header from '../components/Header'
-import { useEffect, useState } from 'react'
-import { SyncLoader } from 'react-spinners'
+import { ProductContext } from '../store/ProductsContext'
 
 const Pizza = () => {
-  const [pizza, setPizza] = useState(null)
-
-  const url = 'http://localhost:5000/api/pizzas/p001'
-
-  const obtenerPizza = async () => {
-    try {
-      const response = await fetch(url)
-      const data = await response.json()
-      setPizza(data)
-      console.log(data)
-    } catch (error) {
-      console.error('Error:', error)
-    }
-  }
-
-  useEffect(() => {
-    obtenerPizza()
-  }, [])
-
-  if (!pizza) {
-    return (
-      <SyncLoader
-        margin={3}
-        size={40}
-        speedMultiplier={0.7}
-        color='#ececec'
-        className='d-flex justify-content-center p-5'
-      />
-    )
-  }
-
+  const { pizza } = useContext(ProductContext)
   return (
     <div className='home'>
       <Header />
       <div className='card-container'>
         <CardPizza
-          key={pizza.id}
-          desc={pizza.desc}
-          img={pizza.img}
-          ingredients={pizza.ingredients}
-          name={pizza.name}
-          price={pizza.price}
+          key={pizza[0].id}
+          desc={pizza[0].desc}
+          img={pizza[0].img}
+          ingredients={pizza[0].ingredients}
+          name={pizza[0].name}
+          price={pizza[0].price}
           className='card'
         />
       </div>

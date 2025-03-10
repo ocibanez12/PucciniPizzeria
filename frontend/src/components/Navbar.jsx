@@ -1,11 +1,10 @@
+import { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { ProductContext } from '../store/ProductsContext'
 
 const Navbar = () => {
-  const total = 0
+  const { total } = useContext(ProductContext)
   const token = false
-  const totalcant = (monto) => {
-    return monto.toLocaleString()
-  }
 
   return (
     <div className='navbar'>
@@ -24,7 +23,7 @@ const Navbar = () => {
             <Link to='/Register'><button type='button' className='btn btn-outline-light'>🔐 Register</button></Link>
           </>
           )}
-      <Link to='/Cart'><button type='button' className='btn btn-outline-light'>Total: ${totalcant(total)} </button></Link>
+      <Link to='/Cart'><button type='button' className='btn btn-outline-light'>Total: ${total} </button></Link>
     </div>
   )
 }
