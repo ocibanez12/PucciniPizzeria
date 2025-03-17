@@ -1,9 +1,10 @@
 import { useContext } from 'react'
 import { ProductContext } from '../store/ProductsContext'
+import { UserContext } from '../store/UserContext'
 
 const Cart = () => {
   const { cart, incCount, decCount, total, capFirst } = useContext(ProductContext)
-
+  const { user } = useContext(UserContext)
   return (
     <div className='cart-container'>
       {cart.map((pizza) => (
@@ -17,7 +18,9 @@ const Cart = () => {
         </div>
       ))}
       <h3>Total: ${total.toLocaleString()}</h3>
-      <button className='pay-button'>Pagar</button>
+      {user
+        ? <button className='pay-button'>Pagar</button>
+        : <button disabled className='pay-button'>Pagar</button>}
     </div>
   )
 }

@@ -2,20 +2,23 @@ import { useContext } from 'react'
 import CardPizza from '../components/CardPizza'
 import Header from '../components/Header'
 import { ProductContext } from '../store/ProductsContext'
+import { useParams } from 'react-router-dom'
 
 const Pizza = () => {
+  const { id } = useParams()
   const { pizza } = useContext(ProductContext)
+  const pizzaC = pizza.find(p => p.id === id)
   return (
     <div className='home'>
       <Header />
       <div className='card-container'>
         <CardPizza
-          key={pizza[0].id}
-          desc={pizza[0].desc}
-          img={pizza[0].img}
-          ingredients={pizza[0].ingredients}
-          name={pizza[0].name}
-          price={pizza[0].price}
+          key={pizzaC.id}
+          desc={pizzaC.desc}
+          img={pizzaC.img}
+          ingredients={pizzaC.ingredients}
+          name={pizzaC.name}
+          price={pizzaC.price}
           className='card'
         />
       </div>

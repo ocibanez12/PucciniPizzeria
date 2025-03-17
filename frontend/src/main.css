@@ -165,12 +165,19 @@ margin: 5px;
 }
 
 .pay-button {
-  background-color: #28a745;
+  background-color: #eea506;
   color: white;
   padding: 10px;
-  border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.4s ease, color 0.4s ease, opacity 0.4s ease;
+}
+
+.pay-button:disabled{
+  cursor: not-allowed;
+  background-color: #d9b347;
+  color: black;
+  opacity: 0.5;
 }
 
 .notContainer {
@@ -208,7 +215,7 @@ margin: 5px;
   padding: 300px;
   gap: 50px;
   height: 87.3vh;
-  border: 1px solid blue;
+
 }
 
 .logoutButton{

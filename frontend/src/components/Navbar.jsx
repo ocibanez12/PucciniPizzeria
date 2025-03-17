@@ -1,20 +1,21 @@
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { ProductContext } from '../store/ProductsContext'
+import { UserContext } from '../store/UserContext'
 
 const Navbar = () => {
   const { total } = useContext(ProductContext)
-  const token = false
+  const { user, logout } = useContext(UserContext)
 
   return (
     <div className='navbar'>
       <h4>Puccini Pizzeria</h4>
       <Link to='/'><button type='button' className='btn btn-outline-light'>🏡 Home</button></Link>
-      {token
+      {user
         ? (
           <>
             <Link to='/Profile'><button type='button' className='btn btn-outline-light'>🔓 Profile</button></Link>
-            <button type='button' className='btn btn-outline-light'>🔓 Logout</button>
+            <button onClick={logout} type='button' className='btn btn-outline-light'>🔓 Logout</button>
           </>
           )
         : (

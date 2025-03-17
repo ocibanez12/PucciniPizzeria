@@ -1,9 +1,12 @@
-const Profile = (/* { email, onLogout } */) => {
+import { useContext } from 'react'
+import { UserContext } from '../store/UserContext'
+const Profile = () => {
+  const { logout } = useContext(UserContext)
   return (
     <div className='containerProfile'>
-      <p>Email: {/* {email} */}</p>
+      <p>Email: {/* {AGREGAR USEREMAIL Y CREAR DATOS DE USUARIO */}</p>
       <button
-        /* onClick={onLogout} */
+        onClick={logout}
         className='logoutButton'
       >
         Cerrar sesión

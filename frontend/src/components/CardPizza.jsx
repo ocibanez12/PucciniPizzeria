@@ -1,12 +1,18 @@
 import { useContext } from 'react'
 import { ProductContext } from '../store/ProductsContext'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const CardPizza = ({ id, img, name, price, desc, ingredients }) => {
   const { addCart, capFirst } = useContext(ProductContext)
 
   const handleAddCart = () => {
     addCart(id, name, img, price)
+  }
+
+  const navigate = useNavigate()
+
+  const irPizza = () => {
+    navigate(`/Pizza/${id}`)
   }
 
   return (
@@ -18,7 +24,7 @@ const CardPizza = ({ id, img, name, price, desc, ingredients }) => {
         <p className='card-text'>{desc}</p>
         <div className='button-container'>
           <button className='card-button' onClick={handleAddCart}>Comprar</button>
-          <Link to='/Pizza'><button className='card-button'>Ver más</button></Link>
+          <button onClick={irPizza} className='card-button'>Ver más</button>
         </div>
       </div>
       <ul className='overlay'>

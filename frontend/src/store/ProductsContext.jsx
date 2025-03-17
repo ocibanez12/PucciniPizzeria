@@ -4,11 +4,11 @@ import { SyncLoader } from 'react-spinners'
 export const ProductContext = createContext()
 
 const ProductProvider = ({ children }) => {
-  const [pizza, setPizza] = useState(null)
+  const [pizza, setPizza] = useState([])
   const [cart, setCart] = useState([])
   const [Loading, setLoading] = useState(true)
 
-  // API
+  /*  API, trae la(s) pizza(s) desde el backend */
   const url = 'http://localhost:5000/api/pizzas/'
 
   const obtenerPizza = async () => {
@@ -28,9 +28,8 @@ const ProductProvider = ({ children }) => {
     obtenerPizza()
   }, [])
 
-  // CARRITO
+  /* CARRITO Y LOGICA + & - */
   const addCart = (id, name, img, price) => {
-    /* ELIMINAR LINEA DE CODIGO PIZZA AL CARRITO */
     console.log('Pizza al Carrito', { id, name, img, price })
     setCart(cart => {
       const pizzaFound = cart.find(pizza => pizza.id === id)
@@ -43,27 +42,27 @@ const ProductProvider = ({ children }) => {
       }
     })
   }
-
+  /* INCREMENTAR CANTIDAD */
   const incCount = (id) => {
     setCart(cart.map(pizza =>
       pizza.id === id ? { ...pizza, count: pizza.count + 1 } : pizza
     ))
   }
-
+  /* DISMINUIR CANTIDAD */
   const decCount = (id) => {
     setCart(cart.map(pizza =>
       pizza.id === id ? { ...pizza, count: pizza.count - 1 } : pizza
     ).filter(pizza => pizza.count > 0)
     )
   }
-
+  /* TOTAL PRECIO */
   const total = cart.reduce((sum, pizza) => sum + pizza.price * pizza.count, 0)
-
+  /* PRIMERA LETRA MAYUSCULA */
   const capFirst = (str) => {
     if (!str) { return '' }
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
   }
-
+  /* ESTADO GLOBAL SE EXPORTA A OTROS COMPONENTES */
   const globalState = {
     pizza,
     Loading,
