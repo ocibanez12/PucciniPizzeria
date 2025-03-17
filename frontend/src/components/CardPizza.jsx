@@ -1,18 +1,17 @@
 import { useContext } from 'react'
 import { ProductContext } from '../store/ProductsContext'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
-const CardPizza = ({ id, img, name, price, desc, ingredients }) => {
+const CardPizza = ({ id, img, name, price, desc, ingredients, ButtonRender }) => {
   const { addCart, capFirst } = useContext(ProductContext)
-
-  const handleAddCart = () => {
-    addCart(id, name, img, price)
-  }
-
   const navigate = useNavigate()
 
   const irPizza = () => {
     navigate(`/Pizza/${id}`)
+  }
+
+  const handleAddCart = () => {
+    addCart(id, name, img, price)
   }
 
   return (
@@ -23,10 +22,12 @@ const CardPizza = ({ id, img, name, price, desc, ingredients }) => {
         <p className='card-text'>Precio: $<strong>{price}</strong></p>
         <p className='card-text'>{desc}</p>
         <div className='button-container'>
-          <button className='card-button' onClick={handleAddCart}>Comprar</button>
-          <button onClick={irPizza} className='card-button'>Ver más</button>
           <button type='button' className='btn btn-outline-light' onClick={handleAddCart}>Comprar</button>
-          <Link to='/Pizza'><button type='button' className='btn btn-outline-light'>Ver más</button></Link>
+          {ButtonRender
+            ? null
+            : (
+              <button type='button' className='btn btn-outline-light' onClick={irPizza}>Ver más</button>
+              )}
         </div>
       </div>
       <ul className='overlay'>

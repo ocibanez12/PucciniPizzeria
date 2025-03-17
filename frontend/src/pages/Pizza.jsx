@@ -20,6 +20,7 @@ const Pizza = () => {
           name={pizzaC.name}
           price={pizzaC.price}
           className='card'
+          ButtonRender
         />
       </div>
     </div>
