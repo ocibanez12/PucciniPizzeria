@@ -44,6 +44,7 @@
   background-color: #ffffff;
    align-items:initial;
    padding:15vh;
+   height: 87.3vh;
 }
 
 .datacontainer h5{
@@ -101,7 +102,7 @@ margin: 5px;
   font-size: 20px;
   font-weight: bold;
   opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.35s ease-in-out;
 }
 
 .card-body{
@@ -123,17 +124,19 @@ margin: 5px;
   border-radius: 5px;
   padding: 5px;
   background-color: #ddd9d9;
+  
 }
 
 
 .cart-container {
-  width: 50%;
+  width: 100%;
   margin: auto;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 10px;
   text-align: center;
   background-color: #ffffff;
+  height: 87.3vh;
 }
 
 .cart-item {
