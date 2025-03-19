@@ -1,13 +1,15 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import Swal from 'sweetalert2'
+import { UserContext } from '../store/UserContext'
 
 const Login = () => {
+  const { authLogin } = useContext(UserContext)
   const [credentials, setCredentials] = useState({
-    mail: '',
-    pass: ''
+    email: '',
+    password: ''
   })
 
-  const handleChange = (e) => {
+  const handleChange = async (e) => {
     setCredentials({
       ...credentials,
       [e.target.name]: e.target.value
@@ -17,9 +19,9 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    const { mail, pass } = credentials
+    const { email, password } = credentials
 
-    if (!mail.trim() || !pass.trim()) {
+    if (!email.trim() || !password.trim()) {
       Swal.fire({
         text: 'No pueden existir campos vacíos',
         icon: 'error'
@@ -27,7 +29,7 @@ const Login = () => {
       return
     }
 
-    if (pass.length < 6) {
+    if (password.length < 6) {
       Swal.fire({
         text: 'La contraseña debe tener un mínimo de 6 caracteres',
         icon: 'error'
@@ -39,6 +41,7 @@ const Login = () => {
       text: 'Inicio de sesión exitoso',
       icon: 'success'
     })
+    await authLogin(credentials.email, credentials.password)
   }
 
   return (
@@ -52,18 +55,18 @@ const Login = () => {
             <input
               className='form-control'
               type='text'
-              value={credentials.mail}
+              value={credentials.email}
               onChange={handleChange}
-              name='mail'
+              name='email'
               placeholder='Correo electrónico'
             />
             <h5>Contraseña</h5>
             <input
               className='form-control'
               type='password'
-              value={credentials.pass}
+              value={credentials.password}
               onChange={handleChange}
-              name='pass'
+              name='password'
               placeholder='Contraseña'
             />
             <button className='btn btn-primary' type='submit'>
