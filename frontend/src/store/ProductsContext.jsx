@@ -1,5 +1,7 @@
 import { createContext, useEffect, useState } from 'react'
 import { SyncLoader } from 'react-spinners'
+import axios from 'axios'
+import Swal from 'sweetalert2'
 
 export const ProductContext = createContext()
 
@@ -59,9 +61,36 @@ const ProductProvider = ({ children }) => {
   const total = cart.reduce((sum, pizza) => sum + pizza.price * pizza.count, 0)
   /* PRIMERA LETRA MAYUSCULA */
   const capFirst = (str) => {
-    if (!str) { return '' }
+    if (!str) {
+      return ''
+    }
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
   }
+
+  const checkOut = async (cart) => {
+    try {
+      const token = localStorage.getItem('token')
+      const URL = 'http://localhost:5000/api/checkouts'
+      const payload = { cart }
+      const response = await axios.post(URL, payload, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      console.log('data', response.data)
+      localStorage.setItem('cart', JSON.stringify(cart))
+      if (cart) {
+        Swal.fire({
+          text: 'Compra exitosa',
+          icon: 'success'
+        })
+      }
+      setCart([])
+    } catch (error) {
+      console.log('Error en el carrito', error)
+    }
+  }
+
   /* ESTADO GLOBAL SE EXPORTA A OTROS COMPONENTES */
   const globalState = {
     pizza,
@@ -72,7 +101,8 @@ const ProductProvider = ({ children }) => {
     total,
     cart,
     addCart,
-    capFirst
+    capFirst,
+    checkOut
   }
 
   return (

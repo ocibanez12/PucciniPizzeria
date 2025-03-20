@@ -1,10 +1,12 @@
 import { useContext } from 'react'
 import { ProductContext } from '../store/ProductsContext'
 import { UserContext } from '../store/UserContext'
+import { Link } from 'react-router-dom'
 
 const Cart = () => {
-  const { cart, incCount, decCount, total, capFirst } = useContext(ProductContext)
+  const { cart, incCount, decCount, total, capFirst, checkOut } = useContext(ProductContext)
   const { user } = useContext(UserContext)
+  const pagar = () => checkOut(cart)
   return (
     <div className='cart-container'>
       {cart.map((pizza) => (
@@ -19,10 +21,12 @@ const Cart = () => {
       ))}
       <h3>Total: ${total.toLocaleString()}</h3>
       {user
-        ? <button className='pay-button'>Pagar</button>
-        : <button disabled className='pay-button'>Pagar</button>}
+        ? (cart.length > 0
+            ? <button onClick={pagar} className='btn btn-primary'>Pagar</button>
+            : <button disabled className='btn btn-primary'>Carrito Vacio</button>
+          )
+        : <Link to='/login'><button className='btn btn-primary'>Iniciar sesion </button></Link>}
     </div>
   )
 }
-
 export default Cart

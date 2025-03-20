@@ -124,7 +124,6 @@ margin: 5px;
   border-radius: 5px;
   padding: 5px;
   background-color: #ddd9d9;
-  
 }
 
 
@@ -167,21 +166,6 @@ margin: 5px;
   color: rgb(17, 174, 236);
 }
 
-.pay-button {
-  background-color: #eea506;
-  color: white;
-  padding: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.4s ease, color 0.4s ease, opacity 0.4s ease;
-}
-
-.pay-button:disabled{
-  cursor: not-allowed;
-  background-color: #d9b347;
-  color: black;
-  opacity: 0.5;
-}
 
 .notContainer {
   background: url('./assets/img/404.png') no-repeat center/cover;

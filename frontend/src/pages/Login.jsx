@@ -4,22 +4,20 @@ import { UserContext } from '../store/UserContext'
 
 const Login = () => {
   const { authLogin } = useContext(UserContext)
-  const [credentials, setCredentials] = useState({
+  const [formData, setFormData] = useState({
     email: '',
     password: ''
   })
 
-  const handleChange = async (e) => {
-    setCredentials({
-      ...credentials,
-      [e.target.name]: e.target.value
-    })
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setFormData({ ...formData, [name]: value })
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    const { email, password } = credentials
+    const { email, password } = formData
 
     if (!email.trim() || !password.trim()) {
       Swal.fire({
@@ -37,11 +35,19 @@ const Login = () => {
       return
     }
 
-    Swal.fire({
-      text: 'Inicio de sesión exitoso',
-      icon: 'success'
-    })
-    await authLogin(credentials.email, credentials.password)
+    const success = await authLogin(email, password)
+
+    if (success) {
+      Swal.fire({
+        text: 'Inicio de sesión exitoso',
+        icon: 'success'
+      })
+    } else {
+      Swal.fire({
+        text: 'Error al iniciar sesión',
+        icon: 'error'
+      })
+    }
   }
 
   return (
@@ -55,18 +61,18 @@ const Login = () => {
             <input
               className='form-control'
               type='text'
-              value={credentials.email}
-              onChange={handleChange}
               name='email'
+              value={formData.email}
+              onChange={handleChange}
               placeholder='Correo electrónico'
             />
             <h5>Contraseña</h5>
             <input
               className='form-control'
               type='password'
-              value={credentials.password}
-              onChange={handleChange}
               name='password'
+              value={formData.password}
+              onChange={handleChange}
               placeholder='Contraseña'
             />
             <button className='btn btn-primary' type='submit'>

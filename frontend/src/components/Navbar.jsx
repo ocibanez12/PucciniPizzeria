@@ -5,13 +5,13 @@ import { UserContext } from '../store/UserContext'
 
 const Navbar = () => {
   const { total } = useContext(ProductContext)
-  const { user, logout } = useContext(UserContext)
+  const { token, logout } = useContext(UserContext)
 
   return (
     <div className='navbar'>
       <h4>Puccini Pizzeria</h4>
       <Link to='/'><button type='button' className='btn btn-outline-light'>🏡 Home</button></Link>
-      {user
+      {token
         ? (
           <>
             <Link to='/Profile'><button type='button' className='btn btn-outline-light'>🔓 Profile</button></Link>

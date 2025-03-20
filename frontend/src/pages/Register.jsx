@@ -1,34 +1,34 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import Swal from 'sweetalert2'
+import { UserContext } from '../store/UserContext'
 
 const Register = () => {
-  const [users, setUsers] = useState({
-    mail: '',
-    pass: '',
+  const { register } = useContext(UserContext)
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
     confirmpass: ''
-
   })
 
   const handleChange = (e) => {
-    setUsers({
-      ...users, [e.target.name]: e.target.value
-    })
+    const { name, value } = e.target
+    setFormData({ ...formData, [name]: value })
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    const { mail, pass, confirmpass } = users
+    const { email, password, confirmpass } = formData
 
-    if (!mail.trim() || !pass.trim() || !confirmpass.trim()) {
+    if (!email.trim() || !password.trim() || !confirmpass.trim()) {
       Swal.fire({
-        text: 'No pueden existir campos vacios',
+        text: 'No pueden existir campos vacíos',
         icon: 'error'
       })
       return
     }
 
-    if (pass !== confirmpass) {
+    if (password !== confirmpass) {
       Swal.fire({
         text: 'Las contraseñas no coinciden',
         icon: 'error'
@@ -36,18 +36,27 @@ const Register = () => {
       return
     }
 
-    if (pass.length < 6 || confirmpass.length < 6) {
+    if (password.length < 6) {
       Swal.fire({
-        text: 'La contraseña debe tener un minimo de 6 caracteres ',
+        text: 'La contraseña debe tener un mínimo de 6 caracteres',
         icon: 'error'
       })
       return
     }
 
-    Swal.fire({
-      text: 'Registro exitoso',
-      icon: 'success'
-    })
+    const success = await register(email, password)
+
+    if (success) {
+      Swal.fire({
+        text: 'Registro exitoso',
+        icon: 'success'
+      })
+    } else {
+      Swal.fire({
+        text: 'Error en el registro',
+        icon: 'error'
+      })
+    }
   }
 
   return (
@@ -60,34 +69,31 @@ const Register = () => {
           <input
             className='form-control'
             type='text'
-            value={users.mail}
+            value={formData.email}
             onChange={handleChange}
-            name='mail'
+            name='email'
             placeholder='Correo electrónico'
           />
           <h5>Contraseña</h5>
           <input
             className='form-control'
             type='password'
-            value={users.pass}
+            value={formData.password}
             onChange={handleChange}
-            name='pass'
+            name='password'
             placeholder='Contraseña'
           />
           <h5>Confirmar contraseña</h5>
           <input
             className='form-control'
             type='password'
-            value={users.confirmpass}
+            value={formData.confirmpass}
             onChange={handleChange}
             name='confirmpass'
             placeholder='Confirmar contraseña'
           />
-          <button
-            className='btn btn-primary'
-            type='submit'
-            disabled=''
-          >Registrar
+          <button className='btn btn-primary' type='submit'>
+            Registrar
           </button>
         </form>
       </div>
